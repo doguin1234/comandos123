@@ -1,0 +1,28 @@
+const Discord = require('discord.js');
+
+exports.run = async (client, message, args) => {
+
+var list = [
+  'https://pa1.narvii.com/6625/1a0750c07f8825fa29f24ab61299a23a9e174254_hq.gif'
+  
+];
+
+var rand = list[Math.floor(Math.random() * list.length)];
+let user = message.mentions.users.first() || client.users.cache.get(args[0]);
+if (!user) {
+return message.reply('lembre-se de mencionar você mesmo depois do comando!');
+}
+/*
+message.channel.send(`Minha história :heart:`, {files: [rand]});
+*/
+let avatar = message.author.displayAvatarURL({format: 'png'});
+  const embed = new Discord.MessageEmbed()
+        .setTitle('Bio')
+        .setColor('#000000')
+        .setDescription(`Com 3 anos eu sai da Rússia junto com a minha irmãzinha Khailee e vim para o Brasil,Hoje tenho meus 16 anos e moro em São Paulo :3`)
+        .setImage(rand)
+        .setTimestamp()
+        .setThumbnail(`https://i.pinimg.com/originals/98/aa/3e/98aa3ee3430adbe396bca48ecda05d06.gif`)
+        .setAuthor(message.author.tag, avatar);
+  await message.channel.send(embed);
+  }
