@@ -1,0 +1,20 @@
+const Discord = require("discord.js")
+
+exports.run = async (client, message, args) => {
+
+const sender = message.author;
+
+let embed = new Discord.MessageEmbed()
+
+.setColor(`#0000FF`)
+.setTitle(`Bem-Vindo amigo :P`)
+.setDescription(` 👻 Esses são os meus comandos ${message.author}:
+
+Prefix K!
+Comandos:antiraid,beijar,clear,coinflip,mute,unmute,ping,say.`)
+.setFooter(`Aproveite :D`)
+
+sender.send(embed)
+message.channel.send(`Mandei os comandos no seu pv!`)
+
+}
