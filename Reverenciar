@@ -1,0 +1,28 @@
+const Discord = require('discord.js');
+
+exports.run = async (client, message, args) => {
+
+var list = [
+  'https://media.tenor.com/images/f17659ca438a3798ab1126dd6557ee66/tenor.gif',
+  'https://pa1.narvii.com/6595/33963d95eb637c3e8cbed27e7a204ae821723c2c_hq.gif'
+];
+
+var rand = list[Math.floor(Math.random() * list.length)];
+let user = message.mentions.users.first() || client.users.cache.get(args[0]);
+if (!user) {
+return message.reply('lembre-se de mencionar um usuário válido para reverenciar!');
+}
+/*
+message.channel.send(`${message.author.username} **acaba de reverenciar** ${user.username}! :flushed:`, {files: [rand]});
+*/
+let avatar = message.author.displayAvatarURL({format: 'png'});
+  const embed = new Discord.MessageEmbed()
+        .setTitle('Uau')
+        .setColor('#00008B')
+        .setDescription(`${message.author} acaba de reverenciar ${user} :flushed:`)
+        .setImage(rand)
+        .setTimestamp()
+        .setFooter('esse dai respeita muito essa pessoa')
+        .setAuthor(message.author.tag, avatar);
+  await message.channel.send(embed);
+  }
