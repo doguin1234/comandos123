@@ -1,0 +1,29 @@
+const Discord = require('discord.js');
+
+exports.run = async (client, message, args) => {
+
+var list = [
+  'https://pa1.narvii.com/6419/ce80adf14c7374939f17f607a5e72f129679f426_hq.gif',
+  'https://fc09.deviantart.net/fs71/f/2010/197/9/4/Misty_Slap_Ash_by_IresistableAshGirl.gif'
+];
+
+var rand = list[Math.floor(Math.random() * list.length)];
+let user = message.mentions.users.first() || client.users.cache.get(args[0]);
+if (!user) {
+return message.reply('lembre-se de mencionar um usuário válido para bater!');
+}
+/*
+message.channel.send(`${message.author.username} **acaba de beijar** ${user.username}! :heart:`, {files: [rand]});
+*/
+let avatar = message.author.displayAvatarURL({format: 'png'});
+  const embed = new Discord.MessageEmbed()
+        .setTitle('Essa Doeu')
+        .setColor('#000000')
+        .setDescription(`${message.author} acaba de espancar ${user}`)
+        .setImage(rand)
+        .setTimestamp()
+        .setThumbnail(avatar)
+        .setFooter('tomo-le o famoso')
+        .setAuthor(message.author.tag, avatar);
+  await message.channel.send(embed);
+  }
